@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %}Login To NSTCR{% endblock %}</title>
+</head>
+
+<body>
+<h2>Salutations </h2>
+    <form action="/search/" method="post">
+		{% csrf_token %}
+		{{form}}
+		
+		<input type="submit" value="OK">
+	</form>
+</body>
+</html>

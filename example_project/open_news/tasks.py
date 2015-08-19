@@ -6,7 +6,7 @@ from open_news.models import NewsWebsite, Article
 @task()
 def run_spiders():
     t = TaskUtils()
-    t.run_spiders(NewsWebsite, 'scraper', 'scraper_runtime', 'article_spider')
+    t.run_spiders(NewsWebsite, 'scraper', 'scraper_runtime', 'dmoz')
     
 @task()
 def run_checkers():

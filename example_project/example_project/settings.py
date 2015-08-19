@@ -8,10 +8,14 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "../.."))
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+     ('admin', 'admin'),
 )
 
 MANAGERS = ADMINS
+
+ITEM_PIPELINES = {
+	'open_news.scraper.pipelines.DjangoWriterPipeline': 100,
+}
 
 DATABASES = {
     'default': {
@@ -86,13 +90,13 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'h51vphv5#0957l2o(jrdsai!l54h(kh&amp;-m^4-1xdd7nwa6=1^^'
+SECRET_KEY = ''
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,6 +115,11 @@ ROOT_URLCONF = 'example_project.urls'
 WSGI_APPLICATION = 'example_project.wsgi.application'
 
 TEMPLATE_DIRS = (
+
+#change this to your own template dir
+	'C:/Users/Ella/git_scrape/django-dynamic-scraper/example_project/open_news/templatetags',
+	'C:/Users/Ella/django/django/new_scrape/scrape_govtrack/templatetags',
+	
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -125,11 +134,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
     'kombu.transport.django',
     'djcelery',
     'dynamic_scraper',
     'open_news',
+	'django_comments',
 )
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
@@ -162,6 +172,8 @@ LOGGING = {
         },
     }
 }
+#AUTH_PROFILE_MODULE = 'open_news.UserProfile'
+#example_project.UserProfile
 
 # django-celery settings
 import djcelery

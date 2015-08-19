@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+
+<body>
+<h1>Salutations Bear</h1>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+           
+			<li><a href="/scrape/">Dynamic Scraper</a></li>
+			<form action="/your-name/" method="post">
+			<label for="your_name">Your name: </label>
+			<input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+			<input type="submit" value="OK">
+			</form>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+	{govtrackcommand}
+</body>
+</html>

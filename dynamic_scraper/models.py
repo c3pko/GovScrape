@@ -8,7 +8,7 @@ class ScrapedObjClass(models.Model):
         verbose_name = "Scraped object class"
         verbose_name_plural = "Scraped object classes"
         
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=300)
     scraper_scheduler_conf = models.TextField(default='\
 "MIN_TIME": 15,\n\
 "MAX_TIME": 10080,\n\
@@ -38,7 +38,7 @@ class ScrapedObjAttr(models.Model):
         ('U', 'DETAIL_PAGE_URL'),
         ('I', 'IMAGE'),
     )
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=300)
     obj_class = models.ForeignKey(ScrapedObjClass)
     attr_type = models.CharField(max_length=1, choices=ATTR_TYPE_CHOICES)
     id_field = models.BooleanField(default=False)
@@ -77,7 +77,7 @@ class Scraper(models.Model):
         ('4', '404'),
         ('X', '404_OR_X_PATH'),
     )
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=300)
     scraped_obj_class = models.ForeignKey(ScrapedObjClass)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='P')
     content_type = models.CharField(max_length=1, choices=CONTENT_TYPE_CHOICES, default='H', help_text="Data type format for scraped main pages (for JSON use JSONPath instead of XPath)")
@@ -165,11 +165,11 @@ class Scraper(models.Model):
 class ScraperElem(models.Model):
     scraped_obj_attr = models.ForeignKey(ScrapedObjAttr)
     scraper = models.ForeignKey(Scraper)   
-    x_path = models.CharField(max_length=200)
-    reg_exp = models.CharField(max_length=200, blank=True)
+    x_path = models.CharField(max_length=2000)
+    reg_exp = models.CharField(max_length=2000, blank=True)
     from_detail_page = models.BooleanField(default=False)
-    processors = models.CharField(max_length=200, blank=True)
-    proc_ctxt = models.CharField(max_length=200, blank=True)
+    processors = models.CharField(max_length=400, blank=True)
+    proc_ctxt = models.CharField(max_length=400, blank=True)
     mandatory = models.BooleanField(default=True)
 
 
@@ -199,7 +199,7 @@ class LogMarker(models.Model):
         ('MI', 'Miscellaneous'),
         ('CU', 'Custom'),            
     )
-    message_contains = models.CharField(max_length=255)
+    message_contains = models.CharField(max_length=500)
     help_text = "Use the string format from the log messages"
     ref_object = models.CharField(max_length=200, blank=True)
     help_text = 'Choose "Custom" and enter your own type in the next field for a custom type'

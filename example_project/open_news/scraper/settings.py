@@ -10,7 +10,10 @@ import os, sys
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "example_project.settings")
-sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../..")) #only for example_project
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "../../..")) 
+#only for example_project
+
+
 
 
 BOT_NAME = 'open_news'
