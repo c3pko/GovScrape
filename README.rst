@@ -1,4 +1,9 @@
 ======================
+This Django Dynamic Scraper was re-purposed to scrape legislative documents. I've included the original read-me for this scraper (not mine) below:
+
+
+
+======================
 django-dynamic-scraper
 ======================
 
